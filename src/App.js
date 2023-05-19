@@ -1,5 +1,8 @@
+import React from 'react';
+import Login from './pages/Login';
+
 function App() {
-  return <h1>Heloo word!</h1>;
+  return <Login />;
 }
 
 export default App;
