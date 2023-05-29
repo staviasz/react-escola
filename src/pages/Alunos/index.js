@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { get } from 'loadsh';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaEdit, FaUserCircle, FaWindowClose } from 'react-icons/fa';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 import axios from '../../services/axios';
 import { Container } from '../../styles/GlobalStyles';
-import { AlunoContainer } from './style';
+import { AlunoContainer, ProfilePicture } from './style';
 
 export default function Alunos() {
-  const [alunos, setAlunos] = React.useState([]);
+  const [alunos, setAlunos] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function getData() {
       const response = await axios.get('/alunos');
-      console.log(response.data);
       setAlunos(response.data);
     }
 
@@ -24,11 +24,23 @@ export default function Alunos() {
       <AlunoContainer>
         {alunos.map((aluno) => (
           <div key={String(aluno.id)}>
-            {get(aluno, 'Images[0].url', false) ? (
-              <img src={console.log(aluno.Images[0].url)} alt="" />
-            ) : (
-              <FaUserCircle size="36px" />
-            )}
+            <ProfilePicture>
+              {get(aluno, 'Images[0].url', false) ? (
+                <img src={aluno.Images[0].url} alt="" />
+              ) : (
+                <FaUserCircle size="36px" />
+              )}
+            </ProfilePicture>
+            <span>{aluno.nome}</span>
+            <span>{aluno.email}</span>
+
+            <Link to={`/aluno/${aluno.id}/edit`}>
+              <FaEdit size={16} />
+            </Link>
+
+            <Link to={`/aluno/${aluno.id}/delete`}>
+              <FaWindowClose size={16} />
+            </Link>
           </div>
         ))}
       </AlunoContainer>
