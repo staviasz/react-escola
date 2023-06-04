@@ -1,5 +1,4 @@
 import { createGlobalStyle, styled } from 'styled-components';
-import 'react-toastify/dist/ReactToastify.css';
 
 import {
   primaryColor,
@@ -57,4 +56,10 @@ export const Container = styled.div`
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const Title = styled.h1`
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 30px;
 `;

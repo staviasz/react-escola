@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Container } from '../../styles/GlobalStyles';
+import { Container, Title } from '../../styles/GlobalStyles';
 import { Form } from './style';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
@@ -51,7 +51,7 @@ export default function Register() {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>{idStorage ? 'Atualizar Dados' : 'Crie sua conta'}</h1>
+      <Title>{idStorage ? 'Atualizar Dados' : 'Crie sua conta'}</Title>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Nome:

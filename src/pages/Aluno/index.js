@@ -3,23 +3,26 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { get } from 'loadsh';
 import { isEmail, isFloat, isInt } from 'validator';
+import { FaUserCircle, FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
-import { Container } from '../../styles/GlobalStyles';
-import { Form } from './style';
+import { Container, Title } from '../../styles/GlobalStyles';
+import { Form, ProfileAvatar } from './style';
 import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Aluno({ match }) {
-  const id = get(match, 'params.id', 0);
+  const id = get(match, 'params.id', '');
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   const [idade, setIdade] = useState('');
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
+  const [avatar, setAvatar] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -31,14 +34,14 @@ export default function Aluno({ match }) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
-        // eslint-disable-next-line no-unused-vars
-        const avatar = get((data, 'image[0].url'), '');
+        const image = get(data.aluno, 'Images[0].url', '');
         setNome(data.aluno.nome);
         setSobrenome(data.aluno.sobrenome);
         setEmail(data.aluno.email);
         setIdade(data.aluno.idade);
         setPeso(data.aluno.peso);
         setAltura(data.aluno.altura);
+        setAvatar(image);
       } catch (err) {
         const status = get(err, 'response.status', 0);
         const errors = get(err, 'response.data.errors', []);
@@ -129,7 +132,19 @@ export default function Aluno({ match }) {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      {id ? 'Editar aluno' : 'Novo aluno'}{' '}
+      <Title>{id ? 'Editar aluno' : 'Novo aluno'}</Title>
+      {id && (
+        <ProfileAvatar>
+          {avatar ? (
+            <img src={avatar} alt={nome} />
+          ) : (
+            <FaUserCircle size={180} />
+          )}
+          <Link to={`/images/${id}`}>
+            <FaEdit size={24} />
+          </Link>
+        </ProfileAvatar>
+      )}
       <Form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 import history from '../../services/history';
-import { Container } from '../../styles/GlobalStyles';
+import { Container, Title } from '../../styles/GlobalStyles';
 import { AlunoContainer, ProfilePicture, NovoAluno } from './style';
 import Loading from '../../components/Loading';
 
@@ -59,7 +59,7 @@ export default function Alunos() {
   return (
     <Container>
       <Loading isLoading={isloading} />
-      <h1>Alunos</h1>
+      <Title>Alunos</Title>
       <NovoAluno to="/aluno/">Novo aluno</NovoAluno>
       <AlunoContainer>
         {alunos.map((aluno, index) => (

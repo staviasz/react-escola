@@ -4,7 +4,7 @@ import { isEmail } from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'loadsh';
 
-import { Container } from '../../styles/GlobalStyles';
+import { Container, Title } from '../../styles/GlobalStyles';
 import { Form } from './style';
 import Loading from '../../components/Loading';
 
@@ -41,7 +41,7 @@ export default function Login(props) {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>Faça login</h1>
+      <Title>Faça login</Title>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="email">
           E-mail:
