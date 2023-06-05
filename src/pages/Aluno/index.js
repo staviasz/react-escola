@@ -115,7 +115,6 @@ export default function Aluno({ match }) {
       }
     } catch (err) {
       const status = get(err, 'response.status', 0);
-      // const data = get(err, 'response.data', {});
       const errors = get(err, 'response.data.errors', []);
 
       if (errors.length > 0) {

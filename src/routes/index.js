@@ -23,7 +23,7 @@ export default function Routes() {
       />
       <PrivateRoute exact path="/aluno/" component={Aluno} isClosed />
       <PrivateRoute exact path="/aluno/:id/edit" component={Aluno} isClosed />
-      <PrivateRoute exact path="/avatar/:id" component={Avatar} isClosed />
+      <PrivateRoute exact path="/images/:id" component={Avatar} isClosed />
       <PrivateRoute path="*" component={Page404} />
     </Switch>
   );
