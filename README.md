@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Documentação da Aplicação Front-End: Sistema Escolar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta documentação apresenta uma aplicação front-end para um sistema escolar desenvolvido em JavaScript com o uso do framework React. A aplicação permite que usuários registrados realizem operações CRUD (Create, Read, Update, Delete) de alunos por meio de uma API.
 
-## Available Scripts
+## Requisitos
 
-In the project directory, you can run:
+A aplicação utiliza diversas bibliotecas e pacotes JavaScript. As principais dependências utilizadas são:
 
-### `npm start`
+- React
+- react-router-dom
+- axios
+- react-redux
+- redux
+- redux-saga
+- styled-components
+- react-icons
+- react-toastify
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Instalação e Configuração do Ambiente
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Instale as dependências do projeto utilizando o seguinte comando:
 
-### `npm test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Configuração do Ambiente
 
-### `npm run build`
+1. Crie um arquivo `.env` na pasta raiz do projeto e configure as variáveis de ambiente necessárias, como a URL da API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Exemplo de arquivo `.env`:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+REACT_APP_API_URL=https://api.exemplo.com
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Uso
 
-### `npm run eject`
+Para iniciar a aplicação em modo de desenvolvimento, execute o seguinte comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Uso
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Acesse a aplicação em seu navegador através do seguinte link: [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Funcionalidades
 
-## Learn More
+A aplicação permite que os usuários realizem as seguintes operações:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Visualização da lista de alunos cadastrados.
+- Adição de novos alunos.
+- Edição dos dados de alunos existentes.
+- Remoção de alunos.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Licença
 
-### Code Splitting
+Este projeto é disponibilizado sob a licença MIT. Executado por **Erick Staviasz** no curso de Javascript e Typescript ministrado por Otávio Miranda
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Recursos Adicionais
 
-### Analyzing the Bundle Size
+Para obter mais informações sobre o framework React e as bibliotecas utilizadas, você pode consultar a documentação oficial e os recursos adicionais:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Documentação Oficial do React](https://reactjs.org/docs/getting-started.html)
+- [Documentação do react-router-dom](https://reactrouter.com/web/guides/quick-start)
+- [Documentação do axios](https://axios-http.com/docs/intro)
+- [Documentação do react-redux](https://react-redux.js.org/introduction/getting-started)
+- [Documentação do styled-components](https://styled-components.com/docs)
+- [Documentação do react-icons](https://react-icons.github.io/react-icons/)
+- [Documentação do react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 
-### Making a Progressive Web App
+link para o repositorio da API utilizada: [https://github.com/staviasz/api_escola](https://github.com/staviasz/api_escola).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
