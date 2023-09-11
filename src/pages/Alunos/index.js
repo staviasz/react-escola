@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
 import { get } from 'loadsh';
+import React, { useEffect, useState } from 'react';
 import {
   FaEdit,
+  FaExclamation,
   FaUserCircle,
   FaWindowClose,
-  FaExclamation,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import { Container, Title } from '../../styles/GlobalStyles';
-import { AlunoContainer, ProfilePicture, NovoAluno } from './style';
-import Loading from '../../components/Loading';
+import { AlunoContainer, NovoAluno, ProfilePicture } from './style';
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
@@ -64,29 +64,37 @@ export default function Alunos() {
       <AlunoContainer>
         {alunos.map((aluno, index) => (
           <div key={String(aluno.id)}>
-            <ProfilePicture>
-              {get(aluno, 'Images[0].url', false) ? (
-                <img src={aluno.Images[0].url} alt="" />
-              ) : (
-                <FaUserCircle size="36px" />
-              )}
-            </ProfilePicture>
-            <span>{aluno.nome}</span>
+            <div>
+              <ProfilePicture>
+                {get(aluno, 'Images[0].cloudinary_url', false) ? (
+                  <img
+                    className="margin-right"
+                    src={aluno.Images[0].cloudinary_url}
+                    alt=""
+                  />
+                ) : (
+                  <FaUserCircle className="margin-right" size="36px" />
+                )}
+              </ProfilePicture>
+              <span>{aluno.nome}</span>
+            </div>
             <span>{aluno.email}</span>
 
-            <Link to={`/aluno/${aluno.id}/edit`}>
-              <FaEdit size={16} />
-            </Link>
-
-            <Link onClick={hadleDeleteAsk} to={`/aluno/${aluno.id}/delete`}>
-              <FaWindowClose size={16} />
-            </Link>
-            <FaExclamation
-              onClick={(e) => hadleDelete(e, aluno.id, index)}
-              size={16}
-              display="none"
-              cursor="pointer"
-            />
+            <div>
+              <Link to={`/aluno/${aluno.id}/edit`}>
+                <FaEdit className="margin-right" size={16} />
+              </Link>
+              <Link onClick={hadleDeleteAsk} to={`/aluno/${aluno.id}/delete`}>
+                <FaWindowClose size={16} />
+              </Link>
+              <FaExclamation
+                onClick={(e) => hadleDelete(e, aluno.id, index)}
+                size={16}
+                display="none"
+                cursor="pointer"
+                color="red"
+              />
+            </div>
           </div>
         ))}
       </AlunoContainer>

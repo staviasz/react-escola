@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { get } from 'loadsh';
-import { isEmail, isFloat, isInt } from 'validator';
-import { FaUserCircle, FaEdit } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FaEdit, FaUserCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { isEmail, isFloat, isInt } from 'validator';
 
 import { toast } from 'react-toastify';
-import { Container, Title } from '../../styles/GlobalStyles';
-import { Form, ProfileAvatar } from './style';
 import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import * as actions from '../../store/modules/auth/actions';
+import { Container, Title } from '../../styles/GlobalStyles';
+import { Form, ProfileAvatar } from './style';
 
 export default function Aluno({ match }) {
   const id = get(match, 'params.id', '');
@@ -34,7 +34,7 @@ export default function Aluno({ match }) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
-        const image = get(data.aluno, 'Images[0].url', '');
+        const image = get(data.aluno, 'Images[0].cloudinary_url', '');
         setNome(data.aluno.nome);
         setSobrenome(data.aluno.sobrenome);
         setEmail(data.aluno.email);

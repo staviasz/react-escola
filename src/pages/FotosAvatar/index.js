@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import { get } from 'loadsh';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import history from '../../services/history';
-import { Container, Title } from '../../styles/GlobalStyles';
-import Loading from '../../components/Loading';
-import { Form } from './style';
 import * as actions from '../../store/modules/auth/actions';
+import { Container, Title } from '../../styles/GlobalStyles';
+import { Form } from './style';
 
 export default function Avatar({ match }) {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function Avatar({ match }) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
-        setImage(get(data.aluno, 'Images[0].url', ''));
+        setImage(get(data.aluno, 'Images[0].cloudinary_url', ''));
         setIsLoading(false);
       } catch (err) {
         toast.error('Erro ao obter image');
@@ -52,6 +52,7 @@ export default function Avatar({ match }) {
       });
       toast.success('Imagem enviada com sucesso');
       setIsLoading(false);
+      history.push(`/aluno/${id}/edit`);
     } catch (err) {
       setIsLoading(false);
       const { status } = get(err, 'response', '');

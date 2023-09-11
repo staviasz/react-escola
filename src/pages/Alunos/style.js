@@ -2,10 +2,18 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const AlunoContainer = styled.div`
-  div {
+  > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .margin-right {
+    margin-right: 24px;
   }
 `;
 export const ProfilePicture = styled.div`
