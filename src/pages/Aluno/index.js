@@ -33,7 +33,7 @@ export default function Aluno({ match }) {
     async function getData() {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`/alunos/${id}`);
+        const { data } = await axios.get(`/${id}`);
         const image = get(data.aluno, 'Images[0].cloudinary_url', '');
         setNome(data.aluno.nome);
         setSobrenome(data.aluno.sobrenome);
@@ -91,7 +91,7 @@ export default function Aluno({ match }) {
       setIsLoading(true);
       if (id) {
         // editando
-        await axios.put(`/alunos/${id}`, {
+        await axios.put(`/${id}`, {
           nome,
           sobrenome,
           email,
@@ -102,7 +102,7 @@ export default function Aluno({ match }) {
         toast.success('Aluno(a) editado(a) com sucesso.');
       } else {
         // criando
-        const { data } = await axios.post(`/alunos/`, {
+        const { data } = await axios.post(`/`, {
           nome,
           sobrenome,
           email,

@@ -22,7 +22,7 @@ export default function Alunos() {
   useEffect(() => {
     async function getData() {
       setIsLoading(true);
-      const response = await axios.get('/alunos');
+      const response = await axios.get('/');
       setAlunos(response.data);
       setIsLoading(false);
     }
@@ -39,7 +39,7 @@ export default function Alunos() {
   const hadleDelete = async (e, id, index) => {
     try {
       setIsLoading(true);
-      await axios.delete(`/alunos/${id}`);
+      await axios.delete(`/${id}`);
       const novosAlunos = [...alunos];
       novosAlunos.splice(index, 1);
       setAlunos(novosAlunos);

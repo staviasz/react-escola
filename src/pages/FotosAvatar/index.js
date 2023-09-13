@@ -21,7 +21,7 @@ export default function Avatar({ match }) {
     const getData = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`/alunos/${id}`);
+        const { data } = await axios.get(`/${id}`);
         setImage(get(data.aluno, 'Images[0].cloudinary_url', ''));
         setIsLoading(false);
       } catch (err) {

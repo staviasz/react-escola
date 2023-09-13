@@ -3,12 +3,12 @@ import { Switch } from 'react-router-dom';
 
 import PrivateRoute from './PrivateRoute';
 
-import Login from '../pages/Login';
 import Aluno from '../pages/Aluno';
 import Alunos from '../pages/Alunos';
-import Register from '../pages/Register';
-import Avatar from '../pages/FotosAvatar';
 import Page404 from '../pages/Erro404';
+import Avatar from '../pages/FotosAvatar';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 export default function Routes() {
   return (
