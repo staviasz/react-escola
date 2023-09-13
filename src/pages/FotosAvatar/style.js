@@ -19,6 +19,7 @@ export const Form = styled.form`
   img {
     width: 180px;
     height: 180px;
+    object-fit: cover;
   }
 
   input {
